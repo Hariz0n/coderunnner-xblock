@@ -1,4 +1,6 @@
 export type ProblemInfoProps = {
-  title: string;
-  description: string;
+  input: string;
+  output: string;
+  timeLimit: string;
+  memoryLimit: string;
 }
