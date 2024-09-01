@@ -1,8 +1,7 @@
 import { getCookie } from "@/shared";
 
-export const fetchData = async (url: string): Promise<Problem> => {
+export const fetchData = async (url: string): Promise<Problem.Data> => {
   const csrfToken = getCookie('csrftoken')
-  console.log(csrfToken)
 
   const data = await fetch(url, {
     method: 'POST',

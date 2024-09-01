@@ -3,18 +3,20 @@ import { FC } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { problemSchema, problemSchemaType } from "../types/problemSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useProblem, useSubmitProblem } from "@/entities/Problem";
 
 export const ProblemForm: FC = () => {
+  const { data } = useProblem();
+  const { mutateAsync } = useSubmitProblem();
   const form = useForm<problemSchemaType>({
-    defaultValues: {
-      code: "",
+    values: {
+      code: data?.code || "",
     },
     resolver: zodResolver(problemSchema),
   });
 
-  const sumbitHandler: SubmitHandler<problemSchemaType> = async ({ code }) => {
-    console.log(code);
-    await new Promise((res) => setTimeout(res, 1000, 11));
+  const sumbitHandler: SubmitHandler<problemSchemaType> = async (body) => {
+    await mutateAsync(body)
   };
 
   const {
@@ -29,7 +31,9 @@ export const ProblemForm: FC = () => {
       <Controller
         control={form.control}
         name="code"
-        render={({ field: { onChange } }) => <Editor onChange={onChange} />}
+        render={({ field: { onChange, value } }) => (
+          <Editor onChange={onChange} value={value} />
+        )}
       />
       <div className="flex items-center gap-8 justify-end">
         <Button disabled={isSubmitting || !isValid} type="submit">

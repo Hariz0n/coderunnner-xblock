@@ -3,11 +3,11 @@ import { fetchData } from "./fetchData";
 import { useRuntimeContext } from "@/entities/Runtime";
 
 export const useProblem = () => {
-  const {data} = useRuntimeContext()
+  const { data } = useRuntimeContext();
 
-  return useQuery<Problem>({
+  return useQuery<Problem.Data>({
     queryKey: ["data"],
     queryFn: () => fetchData(data!.dataUrl),
-    enabled: Boolean(data?.dataUrl)
+    enabled: Boolean(data?.dataUrl),
   });
 };

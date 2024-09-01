@@ -6,3 +6,6 @@ export { getCookie } from "./utils/getCookie";
 export { Button, buttonVariants } from "./ui/button";
 export { Chip } from "./ui/chip";
 export { Editor } from "./ui/Editor";
+
+// Libs
+export { isDevMode } from "./libs/isDevMode";

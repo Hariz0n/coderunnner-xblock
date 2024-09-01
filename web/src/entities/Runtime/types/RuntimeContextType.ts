@@ -1,5 +1,6 @@
 export type RuntimeContextType = {
   data?: {
-    dataUrl: string
+    dataUrl: string;
+    submitUrl: string;
   }
 }

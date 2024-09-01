@@ -1,8 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export declare global {
-  interface Problem {
-    title: string;
-    description: string;
+  namespace Problem {
+    interface Data {
+      title: string;
+      description: string;
+      input: string;
+      output: string;
+      code: string;
+    }
+
+    interface Answer {
+      code: string;
+    }
   }
 
   interface Window {
@@ -10,7 +19,6 @@ export declare global {
   }
 
   let CodeRunnerXBlock: CodeRunnerXBlockType
-
 }
 
 type CodeRunnerXBlockType = (runtime: any, element: any) => void;

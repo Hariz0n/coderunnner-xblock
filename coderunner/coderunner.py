@@ -1,6 +1,7 @@
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
 from .modules.view import ViewMixin
+from .modules.data import DataMixin
 try:
     from xblock.utils.resources import ResourceLoader
 except ModuleNotFoundError:
@@ -8,7 +9,7 @@ except ModuleNotFoundError:
     from xblockutils.resources import ResourceLoader
 
 
-class CodeRunnerXBlock(ViewMixin, XBlock):
+class CodeRunnerXBlock(DataMixin, ViewMixin, XBlock):
     loader = ResourceLoader(__name__)
 
     @XBlock.json_handler
