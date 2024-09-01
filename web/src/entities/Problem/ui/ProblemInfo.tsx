@@ -20,26 +20,26 @@ export const ProblemInfo: FC<ProblemInfoProps> = ({
       </div>
       <div className="flex flex-col gap-4 items-start">
         <Chip char="1" title="Ограничения" />
-        <ul className="flex">
-          <li className="p-4 flex flex-col justify-between gap-2">
+        <ul className="flex w-full">
+          <li className="p-4 flex flex-col justify-between gap-2 relative after:content-[''] after:block after:w-[1px] after:h-10 after:absolute after:bg-our-light-gray after:-right-[1px] after:top-1/2 after:-translate-y-1/2 last:after:hidden flex-grow flex-shrink">
             <span className="text-our-gray text-sm font-medium">
               {timeLimit} секунд
             </span>
             <p className="text-sm font-semibold">Ограничение по времени</p>
           </li>
-          <li className="p-4 flex flex-col justify-between gap-2">
+          <li className="p-4 flex flex-col justify-between gap-2 relative after:content-[''] after:block after:w-[1px] after:h-10 after:absolute after:bg-our-light-gray after:-right-[1px] after:top-1/2 after:-translate-y-1/2 last:after:hidden flex-grow flex-shrink">
             <span className="text-our-gray text-sm font-medium">
               {memoryLimit} Байт
             </span>
             <p className="text-sm font-semibold">Ограничение по памяти</p>
           </li>
-          <li className="p-4 flex flex-col justify-between gap-2">
+          <li className="p-4 flex flex-col justify-between gap-2 relative after:content-[''] after:block after:w-[1px] after:h-10 after:absolute after:bg-our-light-gray after:-right-[1px] after:top-1/2 after:-translate-y-1/2 last:after:hidden flex-grow flex-shrink">
             <span className="text-our-gray text-sm font-medium">
               стандартный ввод или input.txt
             </span>
             <p className="text-sm font-semibold">Ввод</p>
           </li>
-          <li className="p-4 flex flex-col justify-between gap-2">
+          <li className="p-4 flex flex-col justify-between gap-2 relative after:content-[''] after:block after:w-[1px] after:h-10 after:absolute after:bg-our-light-gray after:-right-[1px] after:top-1/2 after:-translate-y-1/2 last:after:hidden flex-grow flex-shrink">
             <span className="text-our-gray text-sm font-medium">
               стандартный вывод или output.txt
             </span>
