@@ -4,12 +4,10 @@ import { python } from "@codemirror/lang-python";
 import './Editor.css';
 
 type EditorProps = {
-  onChange: (value: string) => void;
-  defaultValue?: string;
-  height: string;
-  
+  onChange?: (value: string) => void;
+  value?: string;
 }
 
-export const Editor: FC<EditorProps> = ({ onChange, defaultValue }) => {
-  return <CodeMirror onChange={onChange} defaultValue={defaultValue} extensions={[python()]} />
+export const Editor: FC<EditorProps> = ({ value, onChange }) => {
+  return <CodeMirror value={value} onChange={onChange} extensions={[python()]} />
 }

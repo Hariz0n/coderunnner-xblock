@@ -13,8 +13,7 @@ class CodeRunnerXBlock(ViewMixin, XBlock):
 
     @XBlock.json_handler
     def increment_count(self, data, suffix=''):
-        self.count += 1
-        return {"count": self.count}
+        return {"count": 10}
 
 
     @staticmethod

@@ -7,7 +7,7 @@
 }
 
 .cm-scroller {
-  @apply !font-sans !leading-6 !text-sm;
+  @apply !font-mono !leading-6 !text-sm;
 }
 
 .cm-content {
