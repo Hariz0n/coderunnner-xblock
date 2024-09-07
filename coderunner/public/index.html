@@ -1,0 +1,147 @@
+<article class="coderunner">
+  <section class="coderunner-info">
+    <h1 class="coderunner-info__title font-bold">{{ self.title }}</h1>
+    <p class="coderunner-info__description font-regular">
+      {{self.description}}
+    </p>
+  </section>
+  <section class="coderunner-section">
+    <div class="coderunner-chip">
+      <div class="coderunner-chip__item font-medium">1</div>
+      <span class="coderunner-chip__text font-medium">Формат ввода</span>
+    </div>
+    <p class="coderunner-io__text font-regular">
+      {{self.input}}
+      {% for test in tests %}
+        <span>{{ test.input }}</span>
+      {% endfor %}
+    </p>
+    <div class="coderunner-chip">
+      <div class="coderunner-chip__item font-medium">2</div>
+      <span class="coderunner-chip__text font-medium">Формат вывода</span>
+    </div>
+    <p class="coderunner-io__text font-regular">
+      {{self.output}}
+    </p>
+    <div class="coderunner-chip">
+      <div class="coderunner-chip__item font-medium">3</div>
+      <span class="coderunner-chip__text font-medium">Ограничения</span>
+    </div>
+    <ul class="coderunner-block">
+      <li class="coderunner-block__item">
+        <span class="coderunner-block__subtitle font-medium">2 сек</span>
+        <p class="coderunner-block__title font-medium">Ограничение по времени</p>
+      </li>
+      <li class="coderunner-block__item">
+        <span class="coderunner-block__subtitle font-medium">64 Мб</span>
+        <p class="coderunner-block__title font-medium">Ограничение по памяти</p>
+      </li>
+      <li class="coderunner-block__item">
+        <span class="coderunner-block__subtitle font-medium">стандартный ввод или input.txt</span>
+        <p class="coderunner-block__title font-medium">Ввод</p>
+      </li>
+      <li class="coderunner-block__item">
+        <span class="coderunner-block__subtitle font-medium">стандартный вывод или output.txt</span>
+        <p class="coderunner-block__title font-medium">Вывод</p>
+      </li>
+    </ul>
+  </section>
+  <section class="coderunner-section">
+    <div class="coderunner-chip">
+      <div class="coderunner-chip__item font-medium">4</div>
+      <span class="coderunner-chip__text font-medium">Примеры</span>
+    </div>
+    <ul class="coderunner-block">
+      <li class="coderunner-block__item">
+        <div class="coderunner-block__copy-wrapper">
+          <span class="coderunner-block__subtitle font-medium">123456789 673243342</span>
+          <div class="coderunner-block__copy">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M3.3335 10H2.66683C2.31321 10 1.97407 9.85952 1.72402 9.60947C1.47397 9.35943 1.3335 9.02029 1.3335 8.66666V2.66667C1.3335 2.31304 1.47397 1.9739 1.72402 1.72386C1.97407 1.47381 2.31321 1.33333 2.66683 1.33333H8.66683C9.02045 1.33333 9.35959 1.47381 9.60964 1.72386C9.85969 1.9739 10.0002 2.31304 10.0002 2.66667V3.33333M7.3335 6H13.3335C14.0699 6 14.6668 6.59695 14.6668 7.33333V13.3333C14.6668 14.0697 14.0699 14.6667 13.3335 14.6667H7.3335C6.59712 14.6667 6.00016 14.0697 6.00016 13.3333V7.33333C6.00016 6.59695 6.59712 6 7.3335 6Z"
+                stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <p class="coderunner-block__title font-medium">Ввод</p>
+      </li>
+      <li class="coderunner-block__item">
+        <div class="coderunner-block__copy-wrapper">
+          <span class="coderunner-block__subtitle font-medium">123456789 673243342</span>
+          <div class="coderunner-block__copy">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M3.3335 10H2.66683C2.31321 10 1.97407 9.85952 1.72402 9.60947C1.47397 9.35943 1.3335 9.02029 1.3335 8.66666V2.66667C1.3335 2.31304 1.47397 1.9739 1.72402 1.72386C1.97407 1.47381 2.31321 1.33333 2.66683 1.33333H8.66683C9.02045 1.33333 9.35959 1.47381 9.60964 1.72386C9.85969 1.9739 10.0002 2.31304 10.0002 2.66667V3.33333M7.3335 6H13.3335C14.0699 6 14.6668 6.59695 14.6668 7.33333V13.3333C14.6668 14.0697 14.0699 14.6667 13.3335 14.6667H7.3335C6.59712 14.6667 6.00016 14.0697 6.00016 13.3333V7.33333C6.00016 6.59695 6.59712 6 7.3335 6Z"
+                stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <p class="coderunner-block__title font-medium">Ввод</p>
+      </li>
+    </ul>
+  </section>
+  <section class="code">
+    <textarea name="code" id="code" class="code-editor">{{ self.code }}</textarea>
+    <div class="code__cta">
+      <p class="font-medium code__text">Попытка 1 из 2</p>
+      <button id="submit" type="button" class="button code__button font-regular">Отправить</button>
+    </div>
+  </section>
+  <section class="coderunner-section">
+    <div class="coderunner-chip">
+      <div class="coderunner-chip__item font-medium">5</div>
+      <span class="coderunner-chip__text font-medium">Предыдущие попытки</span>
+    </div>
+    <div class="attempt">
+      <p class="attempt__title font-medium">Попытка 1</p>
+      <ul class="coderunner-block coderunner-block--centered">
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-medium">10.08.24, 14:09:00</p>
+          <span class="coderunner-block__subtitle font-medium">Время посылки</span>
+        </li>
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-regular attempt--green">Right</p>
+          <span class="coderunner-block__subtitle font-medium">Вывод</span>
+        </li>
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-regular">10</p>
+          <span class="coderunner-block__subtitle font-medium">Тест</span>
+        </li>
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-regular">1.2 ms</p>
+          <span class="coderunner-block__subtitle font-medium">Время</span>
+        </li>
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-regular">10</p>
+          <span class="coderunner-block__subtitle font-medium">Баллы</span>
+        </li>
+      </ul>
+    </div>
+    <div class="attempt__spacer"></div>
+    <div class="attempt">
+      <p class="attempt__title font-medium">Попытка 2</p>
+      <ul class="coderunner-block coderunner-block--centered">
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-medium">10.08.24, 14:09:00</p>
+          <span class="coderunner-block__subtitle font-medium">Время посылки</span>
+        </li>
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-regular attempt--red">Wrong</p>
+          <span class="coderunner-block__subtitle font-medium">Вывод</span>
+        </li>
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-regular">10</p>
+          <span class="coderunner-block__subtitle font-medium">Тест</span>
+        </li>
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-regular">1.2 ms</p>
+          <span class="coderunner-block__subtitle font-medium">Время</span>
+        </li>
+        <li class="coderunner-block__item">
+          <p class="coderunner-block__title font-regular">10</p>
+          <span class="coderunner-block__subtitle font-medium">Баллы</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+</article>

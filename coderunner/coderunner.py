@@ -1,6 +1,9 @@
 from xblock.core import XBlock
-from xblock.fields import String, Scope
+from xblock.fields import String, Scope, List
 from web_fragments.fragment import Fragment
+from typing import NamedTuple
+from json import loads
+
 try:
     from xblock.utils.resources import ResourceLoader
 except ModuleNotFoundError:
@@ -8,12 +11,18 @@ except ModuleNotFoundError:
     from xblockutils.resources import ResourceLoader
 
 class ViewMixin:
+  loader = ResourceLoader(__name__)
+  
   static_css = [
+    'public/css/cm.css',
     'public/css/index.css',
   ]
   
   static_js = [
-    'public/js/react.js'
+    'public/js/cm.js',
+    'public/js/cm-al.js',
+    'public/js/cm-py.js',
+    'public/js/index.js',
   ]
   
   def getFragment(self) -> Fragment:
@@ -21,9 +30,10 @@ class ViewMixin:
     
     frag.add_content(
       self.loader.render_django_template(
-        template_path='/public/html/index.html',
+        template_path='/public/index.html',
         context={
-          'self': self
+          'self': self,
+          'tests': loads('[]') if len('') > 0 else []
         }
       )
     )
@@ -41,12 +51,10 @@ class ViewMixin:
     fragment = self.getFragment()
     
     return fragment
-  
-  def author_view(self, context=None) -> Fragment:
-    fragment = self.getFragment()
-    
-    return fragment
 
+class TestDict(NamedTuple):
+  input: str;
+  output: str;
 
 class DataMixin:
   title = String(default='Задание', scope=Scope.content)
@@ -54,16 +62,7 @@ class DataMixin:
   input = String(default='Первая строка входа содержит числа A и B ( -2*10^9 ≤ A, B≤ 2*10^9), разделенные пробелом', scope=Scope.content)
   output = String(default='В единственной строке выхода выведите сумму чисел A+B', scope=Scope.content)
   code = String(default='def x:\n    10', scope=Scope.user_state)
-  
-  @XBlock.json_handler
-  def get_data(self, data, suffix=''):
-    return {
-      "title": self.title,
-      "description": self.description,
-      "input": self.input,
-      "output": self.output,
-      "code": self.code,
-    }
+  tests = List(scope=Scope.content, enforce_type=TestDict)
     
   @XBlock.json_handler
   def submit(self, data, suffix=''):
@@ -72,13 +71,8 @@ class DataMixin:
 
 
 class CodeRunnerXBlock(DataMixin, ViewMixin, XBlock):
-    loader = ResourceLoader(__name__)
-
-    @XBlock.json_handler
-    def increment_count(self, data, suffix=''):
-        return {"count": 10}
-
-
+    hasScore = True
+  
     @staticmethod
     def workbench_scenarios():
         """A canned scenario for display in the workbench."""
