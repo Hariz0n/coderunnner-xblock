@@ -6,6 +6,11 @@
   padding: 0;
 }
 
+.coderunner p,h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+  padding: 0;
+}
+
 /* cyrillic-ext */
 @font-face {
   font-family: 'Roboto';
@@ -237,7 +242,7 @@
 
 /* Chip */
 
-.coderunner-chip {
+.coderunner .coderunner-chip {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -246,7 +251,7 @@
   border-radius: 0.75em;
 }
 
-.coderunner-chip__item {
+.coderunner .coderunner-chip__item {
   height: 2em;
   width: 2em;
   background-color: var(--coderunner-blue);
@@ -258,7 +263,7 @@
   color: var(--coderunner-white);
 }
 
-.coderunner-chip__text {
+.coderunner .coderunner-chip__text {
   font-size: 0.875em;
   color: var(--coderunner-blue);
 }
@@ -270,23 +275,23 @@
   gap: 3em;
 }
 
-.coderunner-info {
+.coderunner .coderunner-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1em;
 }
 
-.coderunner-info__title {
+.coderunner .coderunner-info__title {
   font-size: 2em;
   line-height: 38px;
 }
 
-.coderunner-info__description {
+.coderunner .coderunner-info__description {
   font-size: 1.125em;
 }
 
-.coderunner-section {
+.coderunner .coderunner-section {
   background-color: var(--coderunner-white);
   box-shadow: 8px 8px 24px 0px rgba(0, 0, 0, 0.05);
   padding: 1.5em;
@@ -297,22 +302,23 @@
   gap: 1em;
 }
 
-.coderunner-io__text {
+.coderunner .coderunner-io__text {
   font-size: 1.125em;
 }
 
-.coderunner-block {
+.coderunner .coderunner-block {
   display: flex;
   width: 100%;
 }
 
-.coderunner-block--centered {
+.coderunner .coderunner-block--centered {
   align-items: center;
 }
 
-.coderunner-block__item {
+.coderunner .coderunner-block__item {
   flex: 1 1;
   padding: 1em;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -320,11 +326,11 @@
   position: relative;
 }
 
-.coderunner-block--centered .coderunner-block__item {
+.coderunner .coderunner-block--centered .coderunner-block__item {
   justify-content: initial;
 }
 
-.coderunner-block__item::before {
+.coderunner .coderunner-block__item::before {
   display: block;
   content: '';
   position: relative;
@@ -337,45 +343,45 @@
   position: absolute;
 }
 
-.coderunner-block__item:first-child::before {
+.coderunner .coderunner-block__item:first-child::before {
   display: none;
 }
 
-.coderunner-block__title,.coderunner-block__subtitle {
+.coderunner .coderunner-block__title,.coderunner-block__subtitle {
   font-size: 0.875em;
 }
 
-.coderunner-block__subtitle {
+.coderunner .coderunner-block__subtitle {
   color: var(--coderunner-gray);
 }
 
-.coderunner-block__copy {
+.coderunner .coderunner-block__copy {
   stroke: var(--coderunner-light-gray);
   cursor: pointer;
   position: relative;
   line-height: 0;
 }
 
-.coderunner-block__copy::before {
+.coderunner .coderunner-block__copy::before {
   display: block;
   content: '';
   position: absolute;
   inset: -0.5em;
 }
 
-.coderunner-block__copy-wrapper {
+.coderunner .coderunner-block__copy-wrapper {
   display: flex;
   align-items: flex-start;
   gap: 1em;
   justify-content: space-between;
 }
 
-.code-editor {
+.coderunner .code-editor {
   height: 22.5em !important;
   width: 100% !important;
 }
 
-.CodeMirror {
+.coderunner .CodeMirror {
   font-family: "Roboto" !important;
   line-height: 24px;
   border: 1px solid var(--coderunner-light-gray);
@@ -384,15 +390,15 @@
 }
 
 
-.CodeMirror-linebackground {
+.coderunner .CodeMirror-linebackground {
   all: initial !important;
 }
 
-.CodeMirror-lines {
+.coderunner .CodeMirror-lines {
   padding: 0 0 !important;
 }
 
-.CodeMirror-linenumber {
+.coderunner .CodeMirror-linenumber {
   transition: color .1s ease-in-out, background-color .1s ease-in-out;
   background-color: var(--coderunner-light-gray);
   color: var(--coderunner-gray);
@@ -400,47 +406,48 @@
   font-size: 0.875em;
 }
 
-.CodeMirror-linenumber, .CodeMirror-linenumbers {
+.coderunner .CodeMirror-linenumber, .CodeMirror-linenumbers {
   width: 24px !important;
   padding: 0 !important;
 }
 
-.CodeMirror-activeline .CodeMirror-linenumber {
+.coderunner .CodeMirror-activeline .CodeMirror-linenumber {
   background-color: var(--coderunner-blue);
   color: var(--coderunner-white);
 }
 
-.CodeMirror-selected {
+.coderunner .CodeMirror-selected {
   background-color: var(--coderunner-light-blue) !important;
 }
 
-.CodeMirror pre.CodeMirror-line {
+.coderunner .CodeMirror pre.CodeMirror-line {
   padding: 0 8px !important;
   font-size: 0.875em !important;
 }
 
-.code {
+.coderunner .code {
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
 
-.code__cta {
+.coderunner .code__cta {
   display: flex;
   align-items: center;
   gap: 2em;
 }
 
-.code__text {
+.coderunner .code__text {
   font-size: 1.125em;
   flex: 1 1;
 }
 
-.code__button {
+.coderunner .code__button {
   flex: 0 0;
 }
 
-.button {
+.coderunner .coderunner-button {
+  all: initial;
   display: inline-flex;
   border-radius: 0.5em;
   padding: 0.75em 1em;
@@ -454,34 +461,39 @@
   cursor: pointer;
 }
 
-.button:hover {
+.coderunner .coderunner-button:hover {
+  background: initial;
   background-color: rgba(13, 83, 116, 1);
 }
 
-.button:disabled {
+.coderunner .coderunner-button:disabled {
   background-color: var(--coderunner-gray);
 }
 
-.attempt {
+.coderunner .attempt {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 
-.attempt__spacer {
+.coderunner .attempt__spacer {
   height: 1px;
   width: 100%;
   background-color: var(--coderunner-light-gray);
 }
 
-.attempt__title {
+.coderunner .attempt__spacer:last-child {
+  display: none;
+}
+
+.coderunner .attempt__title {
   font-size: 1.125em;
 }
 
-.attempt--red {
+.coderunner .attempt--red {
   color: var(--coderunner-red);
 }
 
-.attempt--green {
+.coderunner .attempt--green {
   color: var(--coderunner-green);
 }

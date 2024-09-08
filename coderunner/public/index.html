@@ -29,11 +29,11 @@
     </div>
     <ul class="coderunner-block">
       <li class="coderunner-block__item">
-        <span class="coderunner-block__subtitle font-medium">2 сек</span>
+        <span class="coderunner-block__subtitle font-medium">{{ self.timeoutInSecond }} сек</span>
         <p class="coderunner-block__title font-medium">Ограничение по времени</p>
       </li>
       <li class="coderunner-block__item">
-        <span class="coderunner-block__subtitle font-medium">64 Мб</span>
+        <span class="coderunner-block__subtitle font-medium">{{ memory }} Мб</span>
         <p class="coderunner-block__title font-medium">Ограничение по памяти</p>
       </li>
       <li class="coderunner-block__item">
@@ -83,8 +83,12 @@
   <section class="code">
     <textarea name="code" id="code" class="code-editor">{{ self.code }}</textarea>
     <div class="code__cta">
-      <p class="font-medium code__text">Попытка 1 из 2</p>
-      <button id="submit" type="button" class="button code__button font-regular">Отправить</button>
+      <p class="font-medium code__text">
+        {% if self.maxAttempts %}
+        Попытка {{ self.attempts }} из {{ self.maxAttempts }}
+        {% endif %}
+      </p>
+      <button id="submit" type="button" class="coderunner-button code__button font-regular">Отправить</button>
     </div>
   </section>
   <section class="coderunner-section">
@@ -92,56 +96,34 @@
       <div class="coderunner-chip__item font-medium">5</div>
       <span class="coderunner-chip__text font-medium">Предыдущие попытки</span>
     </div>
-    <div class="attempt">
-      <p class="attempt__title font-medium">Попытка 1</p>
-      <ul class="coderunner-block coderunner-block--centered">
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-medium">10.08.24, 14:09:00</p>
-          <span class="coderunner-block__subtitle font-medium">Время посылки</span>
-        </li>
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-regular attempt--green">Right</p>
-          <span class="coderunner-block__subtitle font-medium">Вывод</span>
-        </li>
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-regular">10</p>
-          <span class="coderunner-block__subtitle font-medium">Тест</span>
-        </li>
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-regular">1.2 ms</p>
-          <span class="coderunner-block__subtitle font-medium">Время</span>
-        </li>
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-regular">10</p>
-          <span class="coderunner-block__subtitle font-medium">Баллы</span>
-        </li>
-      </ul>
-    </div>
-    <div class="attempt__spacer"></div>
-    <div class="attempt">
-      <p class="attempt__title font-medium">Попытка 2</p>
-      <ul class="coderunner-block coderunner-block--centered">
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-medium">10.08.24, 14:09:00</p>
-          <span class="coderunner-block__subtitle font-medium">Время посылки</span>
-        </li>
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-regular attempt--red">Wrong</p>
-          <span class="coderunner-block__subtitle font-medium">Вывод</span>
-        </li>
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-regular">10</p>
-          <span class="coderunner-block__subtitle font-medium">Тест</span>
-        </li>
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-regular">1.2 ms</p>
-          <span class="coderunner-block__subtitle font-medium">Время</span>
-        </li>
-        <li class="coderunner-block__item">
-          <p class="coderunner-block__title font-regular">10</p>
-          <span class="coderunner-block__subtitle font-medium">Баллы</span>
-        </li>
-      </ul>
-    </div>
+    {% for answer in answers %}
+      <div class="attempt">
+        <p class="attempt__title font-medium">Попытка {{ answer.index }}</p>
+        <ul class="coderunner-block coderunner-block--centered">
+          <li class="coderunner-block__item">
+            <p class="coderunner-block__title font-medium">{{ answer.formattedDate }}</p>
+            <span class="coderunner-block__subtitle font-medium">Время посылки</span>
+          </li>
+          <li class="coderunner-block__item">
+            {% if answer.result == 'OK' %}<p class="coderunner-block__title font-regular attempt--green">Right</p>{% endif %}
+            {% if answer.result == 'WRONG' %}<p class="coderunner-block__title font-regular attempt--red">Wrong</p>{% endif %}
+            <span class="coderunner-block__subtitle font-medium">Вывод</span>
+          </li>
+          <li class="coderunner-block__item">
+            <p class="coderunner-block__title font-regular">{{ answer.test }}</p>
+            <span class="coderunner-block__subtitle font-medium">Тест</span>
+          </li>
+          <li class="coderunner-block__item">
+            <p class="coderunner-block__title font-regular">{{ answer.time }} ms</p>
+            <span class="coderunner-block__subtitle font-medium">Время</span>
+          </li>
+          <li class="coderunner-block__item">
+            <p class="coderunner-block__title font-regular">{{ answer.score }}</p>
+            <span class="coderunner-block__subtitle font-medium">Баллы</span>
+          </li>
+        </ul>
+      </div>
+      <div class="attempt__spacer"></div>
+    {% endfor %}
   </section>
 </article>
